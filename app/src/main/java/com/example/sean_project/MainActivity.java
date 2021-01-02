@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity
-{
-    public static String ipBaseAddress ="mdad.atspace.co.uk";
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    public static String ipBaseAddress = "http://mdad.atspace.co.uk";
 
     //#1 Declare Class variables
     Button btnStart;
@@ -19,11 +19,13 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
 
-        //#2 Binding Java to XML
+        findViews();
+    }
+
+    private void findViews() {
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         btnStart = (Button) findViewById(R.id.btnStart);
         tvMessage = (TextView) findViewById(R.id.tvMessage);
@@ -31,12 +33,15 @@ public class MainActivity extends AppCompatActivity
 
         //#3 ClickListener for btnStart
 
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Toast.makeText(getApplicationContext(), "Start", Toast.LENGTH_LONG). show();
-            }
-        });
+        btnStart.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == btnStart) {
+            Toast.makeText(getApplicationContext(), "Start", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
     }
 }

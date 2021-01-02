@@ -9,26 +9,39 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class DashboardMenuActivity extends AppCompatActivity {
+public class DashboardMenuActivity extends AppCompatActivity implements View.OnClickListener {
+
     EditText etLanguages;
     Button btnEnglish, btnJapanese;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
 
+        findViews();
+    }
+
+    private void findViews() {
         etLanguages = (EditText) findViewById(R.id.etLanguages);
         btnEnglish = (Button) findViewById(R.id.btnEnglish);
         btnJapanese = (Button) findViewById(R.id.btnJapanese);
 
         //#2 ClickListener for btnEnglish
-        btnEnglish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Start", Toast.LENGTH_LONG).show();
-            }
-        });
+        btnEnglish.setOnClickListener(this);
+        btnJapanese.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == btnEnglish) {
+            //Handle clicks for btnEnglish
+            Toast.makeText(this, "English", Toast.LENGTH_LONG).show();
+        }
+
+        if (v == btnJapanese) {
+            //Handle clicks for btnJapanese
+            Toast.makeText(this, "Japanese", Toast.LENGTH_LONG).show();
+        }
     }
 }
