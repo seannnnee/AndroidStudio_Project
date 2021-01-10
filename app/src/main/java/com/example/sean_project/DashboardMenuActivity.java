@@ -2,6 +2,7 @@ package com.example.sean_project;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DashboardMenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText etLanguages;
-    Button btnEnglish, btnJapanese;
+    EditText etSpelling;
+    Button btnSpelling;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,25 +24,20 @@ public class DashboardMenuActivity extends AppCompatActivity implements View.OnC
     }
 
     private void findViews() {
-        etLanguages = (EditText) findViewById(R.id.etLanguages);
-        btnEnglish = (Button) findViewById(R.id.btnEnglish);
-        btnJapanese = (Button) findViewById(R.id.btnJapanese);
+        etSpelling = (EditText) findViewById(R.id.etSpelling);
+        btnSpelling = (Button) findViewById(R.id.btnSpelling);
 
         //#2 ClickListener for btnEnglish
-        btnEnglish.setOnClickListener(this);
-        btnJapanese.setOnClickListener(this);
+        btnSpelling.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v == btnEnglish) {
+        if (v == btnSpelling) {
             //Handle clicks for btnEnglish
-            Toast.makeText(this, "English", Toast.LENGTH_LONG).show();
-        }
-
-        if (v == btnJapanese) {
-            //Handle clicks for btnJapanese
-            Toast.makeText(this, "Japanese", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Spelling", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, WordsActivity.class);
+            startActivity(intent);
         }
     }
 }

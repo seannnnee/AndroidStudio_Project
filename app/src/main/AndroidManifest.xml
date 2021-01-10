@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sean_project">
-
     <!-- Internet Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,10 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sean_Project"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".AllWordsActivity"></activity>
+        <activity android:name=".WordsActivity" />
+        <activity android:name=".TextToSpeechActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".DashboardMenuActivity" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
